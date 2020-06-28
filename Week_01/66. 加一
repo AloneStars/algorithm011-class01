@@ -1,0 +1,15 @@
+class Solution {
+    public int[] plusOne(int[] digits) {
+        for(int i = digits.length - 1; i >= 0; i--){
+            digits[i]++;
+            if(digits[i] < 10)
+                return digits;
+            digits[i] = 0;       
+        } 
+        int[] ars = new int[digits.length+1];
+        ars[0] = 1;
+        return ars;
+
+    }
+}
+//数组轮询完任然需要进位的话，直接在首位设置1即可，时间复杂度：O(n),空间复杂度：O(n)
