@@ -1,0 +1,15 @@
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+
+        Map<Integer,Integer> maps = new HashMap();
+        for(int i = 0;i < nums.length; i++){
+             int component = target - nums[i];
+             if(maps.containsKey(component)){
+                 return new int[]{maps.get(component),i};
+             }
+             maps.put(nums[i],i);
+        }
+        throw new IllegalArgumentException("No two sum solution");
+    }
+}
+//hash表优化循环的时间消耗，空间换时间，时间复杂度：O(n),空间复杂度：O(n)

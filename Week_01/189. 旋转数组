@@ -1,0 +1,32 @@
+class Solution {
+    public void rotate(int[] nums, int k) {
+        //移动元素个数
+        int count = 0;
+        //记录开始移动的元素下标
+        int start = 0;
+        k = k % nums.length;
+        while(count < nums.length){
+            //当前需要移动的元素下表
+            int current = start;
+            //当前需要移动的元素值
+            int prev = nums[start];
+            do{
+                //将要移动到的位置
+                int next = (current + k) % nums.length;
+                //将被移动的元素的值记录到prev中
+                int temp = nums[next];  
+                //移动当前元素到对应位置
+                nums[next] = prev;
+                //记录下一个移动的值
+                prev = temp;
+                //将需要移动的下标记录到current中
+                current = next;
+                count++;
+            }while(start != current);
+            start++;
+        }
+
+    }
+}
+
+//时间复杂度：O(n),空间复杂度：O(1)
