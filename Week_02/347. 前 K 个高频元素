@@ -1,0 +1,22 @@
+class Solution {
+    public int[] topKFrequent(int[] nums, int k) {
+        int[] vals = new int[k];
+        Map<Integer,Integer> counts = new HashMap<>();
+        for(int num: nums){
+            counts.put(num,counts.getOrDefault(num, 0) + 1);
+        }
+
+        PriorityQueue<Integer> pq = new PriorityQueue<Integer>((n1,n2) -> counts.get(n2) - counts.get(n1));
+        for(int key: counts.keySet()){
+            pq.offer(key);
+        }
+
+        for(int i = 0;i < k; i++){
+            vals[i] = pq.poll();
+        }
+        return vals;
+
+    }
+}
+
+//时间复杂度：O(nlogK),空间复杂度:O(n)
